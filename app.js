@@ -33,13 +33,15 @@ walk(models_path);
 var logger = require('koa-logger')
   , json = require('koa-json')
   , views = require('koa-views')
-  , onerror = require('koa-onerror')
-  , session = require('koa-session');
+  , onerror = require('koa-onerror');
+
+const session = require('koa-session');
 const bodyParser = require('koa-bodyparser')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/register');
+var router = require('./routes/router')();//api router file
 
 const Koa = require('koa');
 const render = require('koa-art-template');
@@ -53,7 +55,6 @@ mongoose.connect(db);
 
 require('babel-register');
 app.keys = ['zhangivon'];
-
 
 // error handler
 onerror(app);
@@ -70,18 +71,18 @@ render(app, {
   debug: process.env.NODE_ENV !== 'production'
 });
 
-// app.use(require('koa-bodyparser')());
-// app.use(json());
-// app.use(logger());
-// app.use(session(app));
+app.use(require('koa-bodyparser')());
+app.use(json());
+app.use(logger());
+app.use(session(app));
 
-app.use(function*(next) {
-  json()
-  logger()
-  session(app)
-  bodyParser()
-  yield next;
-});
+// app.use(function*(next) {
+//   json()
+//   logger()
+//   session(app)
+//   bodyParser()
+//   yield next;
+// });
 
 
 app.use(function *(next){
@@ -98,9 +99,7 @@ app.use(index.routes(), index.allowedMethods());
 app.use(users.routes(), users.allowedMethods());
 app.use(register.routes(), register.allowedMethods());
 //api 路由
-var router = require('./routes/apiRouter')();//api router file
 app.use(router.routes()).use(router.allowedMethods());
-
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
