@@ -10,31 +10,41 @@
     <title>注册</title>
 </head>
 <body>
+    <div class="title-box">
+        用户注册
+    </div>
     <form class="layui-form form-div" action="">
         <div class="layui-form-item">
-            <label class="layui-form-label">输入框</label>
+            <label class="layui-form-label">用户名：</label>
             <div class="layui-input-block">
-            <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            <input type="text" name="title" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input user-name-inpt">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">密码框</label>
+            <label class="layui-form-label">密码：</label>
             <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input user-name-inpt">
             </div>
-            <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            <div class="layui-form-mid layui-word-aux txt-box">请输入密码</div>
         </div>
+        <div class="layui-form-item">
+                <label class="layui-form-label">再次输入</label>
+                <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input user-name-inpt">
+                </div>
+                <div class="layui-form-mid layui-word-aux txt-box">请输入密码</div>
+            </div>
         <div class="layui-form-item">
             <label class="layui-form-label">选择框</label>
-            <div class="layui-input-block">
-            <select name="city" lay-verify="required">
-                <option value=""></option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
+            <div class="layui-input-block user-name-inpt">
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">北京</option>
+                    <option value="1">上海</option>
+                    <option value="2">广州</option>
+                    <option value="3">深圳</option>
+                    <option value="4">杭州</option>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">

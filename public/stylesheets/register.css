@@ -1,5 +1,21 @@
 .form-div{
     width: 70%;
     margin: 0 auto;
-    margin-top: 100px;
+}
+
+.title-box{
+    width: 70%;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    padding: 40px 0;
+}
+
+.form-div .user-name-inpt{
+    width: 200px;
+}
+
+.form-div .txt-box{
+   margin-left: 50px;
 }

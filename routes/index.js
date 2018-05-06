@@ -1,20 +1,16 @@
 var router = require('koa-router')();
 
-router.get('/', function(next) {
-  this.render('login', {
-    users: [{ name: 'Dead Horse' }, { name: 'Jack' }, { name: 'Tom' }]
-  });
-});
+// router.get('/', function(next) {
+//   this.render('login', {});
+// });
 
-router.get('/login', function(next) {
-  this.render('login', {
-    users: [{ name: 'Dead Horse' }, { name: 'Jack' }, { name: 'Tom' }]
-  });
-});
+router.get('/', (ctx, next) => {
+  ctx.render('login');
+})
 
-router.get('/foo', function (next) {
-  this.render('index', {
-    title: 'Hello World foo!'
+router.get('/login', function(ctx, next) {
+  ctx.render('login', {
+    users: [{ name: 'Dead Horse' }, { name: 'Jack' }, { name: 'Tom' }]
   });
 });
 
