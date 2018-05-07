@@ -13,9 +13,11 @@ var userHelper = require('../dbhelper/userHelper');
  * @yield {[type]}   [description]
  */
 exports.signup = async (ctx, next) => {
-	var phoneNumber = xss(ctx.request.body.phoneNumber.trim())
+  var phoneNumber = xss(ctx.request.body.phoneNumber.trim());
+  var nickname = xss(ctx.request.body.nickname.trim());
 	var user = await User.findOne({
-	  phoneNumber: phoneNumber
+    phoneNumber: phoneNumber,
+    nickname: nickname
 	}).exec()
   console.log(user)
 	
@@ -23,11 +25,10 @@ exports.signup = async (ctx, next) => {
   console.log(phoneNumber)
 	if (!user) {
 	  var accessToken = uuid.v4()
-
 	  user = new User({
-	    nickname: '测试用户',
+	    nickname: nickname,
 	    avatar: 'http://upload-images.jianshu.io/upload_images/5307186-eda1b28e54a4d48e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
-	    phoneNumber: xss(phoneNumber),
+	    phoneNumber: phoneNumber,
 	    verifyCode: verifyCode,
 	    accessToken: accessToken
 	  })
@@ -41,8 +42,7 @@ exports.signup = async (ctx, next) => {
     ctx.body = {
       success: true
     }
-  }
-  catch (e) {
+  }catch (e) {
     ctx.body = {
       success: false
     }
