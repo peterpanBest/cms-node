@@ -20,8 +20,8 @@ smtpTransport = nodemailer.createTransport({
  */
 
 var mailOptions = {
-  from: "peter ", // sender address
-  to: "pfs2565@perfect365.cn", // list of receivers
+  from: "", // sender address
+  to: "", // list of receivers
   subject: "Hello", // Subject line
   text: "Hello world ✔", // plaintext body
   html: "<b>Hello world ✔</b>" // html body

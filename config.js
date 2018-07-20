@@ -1,8 +1,8 @@
 module.exports = {
   email: {
     service: "Gmail",
-    user: "peterleehomie@gmail.com",
-    pass: "GmailPFS1314520",
+    user: "",
+    pass: "",
     host: "smtp.gmail.com",
     port: 465
   }
