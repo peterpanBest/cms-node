@@ -1,8 +1,9 @@
 'use strict'
 
-const Router = require('koa-router')
-const User = require('../app/controllers/users')
-const App = require('../app/controllers/app')
+const Router = require('koa-router');
+const User = require('../app/controllers/users');
+const Logs = require("../app/controllers/logs");
+const App = require('../app/controllers/app');
 
 module.exports = function(){
 	var router = new Router({
@@ -17,6 +18,9 @@ module.exports = function(){
   router.get('/test/user/users',User.users)
   router.post('/test/user/add',User.addUser)
   router.post('/test/user/delete',User.deleteUser)
+
+  //log插入
+  router.post("/log/add", Logs.addLog);
 
   return router
 }
